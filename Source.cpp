@@ -45,7 +45,32 @@ void CreateNewProcess() {
 		}
 	} while (!((isWaitTypeProcess == 0) || (isWaitTypeProcess == 1)));
 	//cout << "Wait: " << isWaitTypeProcess << endl;
-
+	int err;
+	//switch (isWaitTypeProcess) {
+	//	case 0: if (!(err = _spawnl(P_WAIT, "D:\\AIDA64\\AIDA64 Extreme\\aida64.exe", "Test run aida64", NULL))) { //P_WAIT, 0
+	//			printf("Error code %d\n", err);
+	//			system("pause");
+	//		} else cout << "AIDA64 lauched successfuly!\n" << endl;
+	//		break;
+	//	case 1: if (!(err = _spawnl(0, "D:\\AIDA64\\AIDA64 Extreme\\aida64.exe", "Test run aida64", NULL))) { //P_WAIT, 0
+	//			printf("Error code %d\n", err);
+	//			system("pause");
+	//		} else cout << "AIDA64 lauched successfuly!\n" << endl;
+	//		break;
+	//	default: break;
+	//}
+	if (isWaitTypeProcess == 0) {
+		if (!(err = _spawnl(P_WAIT, "C:\\Windows\\System32\\cmd.exe", "Test run cmd", NULL))) { //P_WAIT, 0
+			printf("Error code %d\n", err);
+			system("pause");
+		} else cout << "cmd lauched successfuly!\n" << endl;
+		//system("pause");
+	} else if (isWaitTypeProcess == 1) {
+		if (!(err = _spawnl(0, "C:\\Windows\\System32\\cmd.exe", "Test run cmd", NULL))) { //P_WAIT, 0
+			printf("Error code %d\n", err);
+			system("pause");
+		} else cout << "cmd lauched successfuly!\n" << endl;
+	} else {}
 	char* cmdline = new char[1000];
 	STARTUPINFO si = { sizeof(si) };
 	PROCESS_INFORMATION pi;
